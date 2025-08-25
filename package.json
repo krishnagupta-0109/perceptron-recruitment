@@ -1,0 +1,28 @@
+{
+  "name": "perceptron_recruitment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishnagupta-0109/perceptron-recruitment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/krishnagupta-0109/perceptron-recruitment/issues"
+  },
+  "homepage": "https://github.com/krishnagupta-0109/perceptron-recruitment#readme",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0",
+    "multer": "^2.0.2"
+  }
+}
