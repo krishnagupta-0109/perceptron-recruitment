@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptron Registration</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="form-container glowing-element" >
+        <h1 class="form-title">Join Perceptron</h1>
+        
+        <form id="registrationForm">
+            <div class="form-part active" data-step="1">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="scholarNo">Scholar No.</label>
+                    <input type="text" id="scholarNo" name="scholarNo" required maxlength="8">
+                </div>
+                <button type="button" class="next-step cta-button">Next</button>
+            </div>
+
+            <div class="form-part" data-step="2">
+                <div class="form-group">
+                    <label for="year">Current Year</label>
+                    <select id="year" name="currentyear" required>
+                        <option value="" disabled selected>Select year</option>
+                        <option value="first">First Year</option>
+                        <option value="second">Second Year</option>
+                        <option value="third">Third Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="branch">Branch</label>
+                    <select id="branch" name="branch" required>
+                        <option value="" disabled selected>Select branch</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="IT">IT</option>
+                    </select>
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="prev-step cta-button prev">Previous</button>
+                    <button type="button" class="next-step cta-button">Next</button>
+                </div>
+            </div>
+
+            <div class="form-part" data-step="3">
+                <div class="form-group">
+                    <label for="firstPref">First Preference</label>
+                    <select id="firstPref" name="pref1" required>
+                        <option value="" disabled selected>Select preference</option>
+                        <option value="AI & ML">AI & ML</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Competitive Programming">Competitive Programming</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Robotics">Robotics</option>
+                        <option value="Game Development">Game Development</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="secondPref">Second Preference</label>
+                    <select id="secondPref" name="pref2" required>
+                        <option value="" disabled selected>Select preference</option>
+                    </select>
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="prev-step cta-button prev">Previous</button>
+                    <button type="button" class="next-step cta-button">Next</button>
+                </div>
+            </div>
+
+            <div class="form-part" data-step="4">
+    <div class="form-group">
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+    </div>
+    <div class="navigation-buttons">
+        <button type="button" class="prev-step cta-button prev">Previous</button>
+        <button type="submit" class="cta-button">Submit</button>
+    </div>
+</div>
+
+            <div class="progress-indicator">
+    <span class="dot active" data-step="1"></span>
+    <span class="dot" data-step="2"></span>
+    <span class="dot" data-step="3"></span>
+    <span class="dot" data-step="4"></span>
+</div>
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
+        </div>
+
+        </form>
+        <div id="modal" class="modal-overlay">
+    <div class="modal-content glowing-element">
+        <span class="close-button">&times;</span>
+        <h2 class="modal-title">Registration Successful!</h2>
+        <p class="modal-message">Your details have been submitted. Welcome to Perceptron!</p>
+    </div>
+</div>
+    </div>
+
+    <script src="js/particles.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('particles.js config loaded');
+        });
+    </script>
+</body>
+</html>
