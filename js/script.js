@@ -55,11 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const validateField = (input) => {
         let isFieldValid = true;
 
-        if (input.id === 'scholarNo' && input.value.length !== 8) {
-            isFieldValid = false;
-        } else if (!input.checkValidity()) {
-            isFieldValid = false;
-        }
+        if (!input.checkValidity()) {
+        isFieldValid = false;
+    }
 
         if (isFieldValid) {
             input.classList.remove('invalid');
