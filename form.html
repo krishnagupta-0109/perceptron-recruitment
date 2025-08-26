@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- The particles.js background will be hidden on mobile via CSS for performance -->
-    <div id="particles-js"></div>
-
+    <!-- The particles.js code has been removed for better mobile stability. -->
     <div class="form-container glowing-element">
         <h1 class="form-title">Join Perceptron</h1>
         
@@ -89,7 +87,6 @@
                 <div class="form-group">
                     <label for="resume">Upload Resume</label>
                     <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-                    <!-- CRITICAL FIX: This span was missing and caused the JavaScript to crash -->
                     <span id="file-name">No file chosen</span>
                 </div>
                 <div class="navigation-buttons">
@@ -122,15 +119,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT FIX: Place particles.js script before the inline script that uses it. -->
-    <script src="js/particles.min.js"></script>
-    <script>
-        // Load particles.js config
-        particlesJS.load('particles-js', 'particles.json', function() {
-            console.log('particles.js config loaded');
-        });
-    </script>
-    <!-- SCRIPT FIX: Place your main script last to ensure all HTML elements are loaded first -->
+    <!-- The only script that remains is your main script.js file -->
     <script src="js/script.js"></script>
 </body>
 </html>
