@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (validateStep(currentStep)) {
             const formData = new FormData(form);
             
-            const API_ENDPOINT = 'http://localhost:3000/submissions'; 
+            const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com/submissions';
             
             loadingOverlay.classList.add('active');
             
