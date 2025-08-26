@@ -99,20 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const validateStep = (step) => {
-        const currentStepEl = document.querySelector(`.form-part[data-step="${step}"]`);
-        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
-        let isValid = true;
-        inputs.forEach(input => {
-            if (input.id === 'scholarNo' && input.value.length !== 8) {
-                isValid = false;
-            }
-            if (!input.checkValidity()) {
-                isValid = false;
-                input.reportValidity();
-            }
-        });
-        return isValid;
-    };
+    const currentStepEl = document.querySelector(`.form-part[data-step="${step}"]`);
+    const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
+    let isValid = true;
+    inputs.forEach(input => {
+        if (!input.checkValidity()) {
+            isValid = false;
+            input.reportValidity();
+        }
+    });
+    return isValid;
+};
 
     nextButtons.forEach(button => {
         button.addEventListener('click', () => {
