@@ -26,45 +26,15 @@ body, html {
     overflow: hidden;
 }
 
-/* New CSS-based background animation */
-.background-animation {
+/* particles.js container styles */
+#particles-js {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--dark-bg); /* Use your defined dark background color */
-    z-index: -1; /* Make sure it's behind everything else */
-    overflow: hidden;
-}
-
-.background-animation::before,
-.background-animation::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* This creates a subtle moving dots effect, similar to threads */
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: move-background 30s linear infinite;
-}
-
-.background-animation::after {
-    animation-direction: reverse;
-    background-size: 15px 15px;
-    opacity: 0.5;
-}
-
-@keyframes move-background {
-    from {
-        transform: translate(0, 0);
-    }
-    to {
-        transform: translate(150px, 150px);
-    }
+    z-index: -1;
+    background-color: var(--dark-bg);
 }
 
 /* Welcome Page Styling */
