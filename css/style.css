@@ -363,3 +363,51 @@ body, html {
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 768px) {
+    /* Adjustments for the main container */
+    .form-container {
+        padding: 1.5rem;
+        width: 90%;
+        max-width: 90%;
+        border-radius: 10px;
+    }
+
+    /* Adjustments for form titles and labels */
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    /* Adjustments for input fields and buttons */
+    .form-group input,
+    .form-group select {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Adjustments for the modal pop-up */
+    .modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    /* Adjustments for the progress dots */
+    .progress-indicator {
+        display: none;
+    }
+}
