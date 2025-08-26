@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstPrefSelect = document.getElementById('firstPref');
     const secondPrefSelect = document.getElementById('secondPref');
     const allOptions = [
-    { value: 'Treasurer', text: 'Treasurer' },
-    { value: 'Web Development Lead', text: 'Web Development Lead' },
-    { value: 'App Dev Lead', text: 'App Dev Lead' },
-    { value: 'PR & Outreach Lead', text: 'PR & Outreach Lead' },
-    { value: 'Event Manager', text: 'Event Manager' },
-    { value: 'Executive', text: 'Executive' },
-    { value: 'Marketing & Design Lead', text: 'Marketing & Design Lead' }
-];
+        { value: 'AI & ML', text: 'AI & ML' },
+        { value: 'Web Development', text: 'Web Development' },
+        { value: 'Data Science', text: 'Data Science' },
+        { value: 'Competitive Programming', text: 'Competitive Programming' },
+        { value: 'Cybersecurity', text: 'Cybersecurity' },
+        { value: 'Robotics', text: 'Robotics' },
+        { value: 'Game Development', text: 'Game Development' }
+    ];
 
     const updateSecondPref = () => {
         const selectedValue = firstPrefSelect.value;
@@ -55,9 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const validateField = (input) => {
         let isFieldValid = true;
 
-        if (!input.checkValidity()) {
-        isFieldValid = false;
-    }
+        if (input.id === 'scholarNo' && input.value.length !== 8) {
+            isFieldValid = false;
+        } else if (!input.checkValidity()) {
+            isFieldValid = false;
+        }
 
         if (isFieldValid) {
             input.classList.remove('invalid');
@@ -99,17 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const validateStep = (step) => {
-    const currentStepEl = document.querySelector(`.form-part[data-step="${step}"]`);
-    const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
-    let isValid = true;
-    inputs.forEach(input => {
-        if (!input.checkValidity()) {
-            isValid = false;
-            input.reportValidity();
-        }
-    });
-    return isValid;
-};
+        const currentStepEl = document.querySelector(`.form-part[data-step="${step}"]`);
+        const inputs = currentStepEl.querySelectorAll('input[required], select[required]');
+        let isValid = true;
+        inputs.forEach(input => {
+            if (input.id === 'scholarNo' && input.value.length !== 8) {
+                isValid = false;
+            }
+            if (!input.checkValidity()) {
+                isValid = false;
+                input.reportValidity();
+            }
+        });
+        return isValid;
+    };
 
     nextButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -132,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (validateStep(currentStep)) {
             const formData = new FormData(form);
             
-            const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com/submissions';
+            const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com'; 
             
             loadingOverlay.classList.add('active');
             
