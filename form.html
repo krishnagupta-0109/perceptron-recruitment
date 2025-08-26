@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- The particles.js background will be hidden on mobile via CSS for performance -->
     <div id="particles-js"></div>
 
-    <div class="form-container glowing-element" >
+    <div class="form-container glowing-element">
         <h1 class="form-title">Join Perceptron</h1>
         
         <form id="registrationForm">
+            <!-- Step 1: Personal Info -->
             <div class="form-part active" data-step="1">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -24,11 +26,12 @@
                 </div>
                 <div class="form-group">
                     <label for="scholarNo">Scholar No.</label>
-                    <input type="text" id="scholarNo" name="scholarNo" required >
+                    <input type="text" id="scholarNo" name="scholarNo" required>
                 </div>
                 <button type="button" class="next-step cta-button">Next</button>
             </div>
 
+            <!-- Step 2: Academic Info -->
             <div class="form-part" data-step="2">
                 <div class="form-group">
                     <label for="year">Current Year</label>
@@ -54,19 +57,20 @@
                 </div>
             </div>
 
+            <!-- Step 3: Preferences -->
             <div class="form-part" data-step="3">
                 <div class="form-group">
                     <label for="firstPref">First Preference</label>
-<select id="firstPref" name="pref1" required>
-    <option value="" disabled selected>Select first preference</option>
-    <option value="Treasurer">Treasurer</option>
-    <option value="Web Development Lead">Web Development Lead</option>
-    <option value="App Dev Lead">App Dev Lead</option>
-    <option value="PR & Outreach Lead">PR & Outreach Lead</option>
-    <option value="Event Manager">Event Manager</option>
-    <option value="Executive">Executive</option>
-    <option value="Marketing & Design Lead">Marketing & Design Lead</option>
-</select>
+                    <select id="firstPref" name="pref1" required>
+                        <option value="" disabled selected>Select first preference</option>
+                        <option value="Treasurer">Treasurer</option>
+                        <option value="Web Development Lead">Web Development Lead</option>
+                        <option value="App Dev Lead">App Dev Lead</option>
+                        <option value="PR & Outreach Lead">PR & Outreach Lead</option>
+                        <option value="Event Manager">Event Manager</option>
+                        <option value="Executive">Executive</option>
+                        <option value="Marketing & Design Lead">Marketing & Design Lead</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="secondPref">Second Preference</label>
@@ -80,44 +84,53 @@
                 </div>
             </div>
 
+            <!-- Step 4: Resume Upload -->
             <div class="form-part" data-step="4">
-    <div class="form-group">
-        <label for="resume">Upload Resume</label>
-        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-        
-    </div>
-    <div class="navigation-buttons">
-        <button type="button" class="prev-step cta-button prev">Previous</button>
-        <button type="submit" class="cta-button">Submit</button>
-    </div>
-</div>
+                <div class="form-group">
+                    <label for="resume">Upload Resume</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                    <!-- CRITICAL FIX: This span was missing and caused the JavaScript to crash -->
+                    <span id="file-name">No file chosen</span>
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="prev-step cta-button prev">Previous</button>
+                    <button type="submit" class="cta-button">Submit</button>
+                </div>
+            </div>
 
+            <!-- Progress dots -->
             <div class="progress-indicator">
-    <span class="dot active" data-step="1"></span>
-    <span class="dot" data-step="2"></span>
-    <span class="dot" data-step="3"></span>
-    <span class="dot" data-step="4"></span>
-</div>
-        <div id="loading-overlay" class="loading-overlay">
-            <div class="loading-spinner"></div>
-        </div>
-
+                <span class="dot active" data-step="1"></span>
+                <span class="dot" data-step="2"></span>
+                <span class="dot" data-step="3"></span>
+                <span class="dot" data-step="4"></span>
+            </div>
+            
+            <!-- Loading overlay -->
+            <div id="loading-overlay" class="loading-overlay">
+                <div class="loading-spinner"></div>
+            </div>
         </form>
+        
+        <!-- Modal pop-up -->
         <div id="modal" class="modal-overlay">
-    <div class="modal-content glowing-element">
-        <span class="close-button">&times;</span>
-        <h2 class="modal-title">Registration Successful!</h2>
-        <p class="modal-message">Your details have been submitted. Welcome to Perceptron!</p>
-    </div>
-</div>
+            <div class="modal-content glowing-element">
+                <span class="close-button">&times;</span>
+                <h2 class="modal-title">Registration Successful!</h2>
+                <p class="modal-message">Your details have been submitted. Welcome to Perceptron!</p>
+            </div>
+        </div>
     </div>
 
+    <!-- SCRIPT FIX: Place particles.js script before the inline script that uses it. -->
     <script src="js/particles.min.js"></script>
-    <script src="js/script.js"></script>
     <script>
+        // Load particles.js config
         particlesJS.load('particles-js', 'particles.json', function() {
             console.log('particles.js config loaded');
         });
     </script>
+    <!-- SCRIPT FIX: Place your main script last to ensure all HTML elements are loaded first -->
+    <script src="js/script.js"></script>
 </body>
 </html>
