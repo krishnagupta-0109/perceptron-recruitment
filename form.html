@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- particles.js Container -->
     <div id="particles-js"></div>
 
-    <div class="form-container glowing-element">
+    <div class="form-container glowing-element" >
         <h1 class="form-title">Join Perceptron</h1>
         
         <form id="registrationForm">
-            <!-- Step 1: Personal Info -->
             <div class="form-part active" data-step="1">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -26,12 +24,11 @@
                 </div>
                 <div class="form-group">
                     <label for="scholarNo">Scholar No.</label>
-                    <input type="text" id="scholarNo" name="scholarNo" required>
+                    <input type="text" id="scholarNo" name="scholarNo" required maxlength="8">
                 </div>
                 <button type="button" class="next-step cta-button">Next</button>
             </div>
 
-            <!-- Step 2: Academic Info -->
             <div class="form-part" data-step="2">
                 <div class="form-group">
                     <label for="year">Current Year</label>
@@ -57,19 +54,18 @@
                 </div>
             </div>
 
-            <!-- Step 3: Preferences -->
             <div class="form-part" data-step="3">
                 <div class="form-group">
                     <label for="firstPref">First Preference</label>
                     <select id="firstPref" name="pref1" required>
-                        <option value="" disabled selected>Select first preference</option>
-                        <option value="Treasurer">Treasurer</option>
-                        <option value="Web Development Lead">Web Development Lead</option>
-                        <option value="App Dev Lead">App Dev Lead</option>
-                        <option value="PR & Outreach Lead">PR & Outreach Lead</option>
-                        <option value="Event Manager">Event Manager</option>
-                        <option value="Executive">Executive</option>
-                        <option value="Marketing & Design Lead">Marketing & Design Lead</option>
+                        <option value="" disabled selected>Select preference</option>
+                        <option value="AI & ML">AI & ML</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Competitive Programming">Competitive Programming</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Robotics">Robotics</option>
+                        <option value="Game Development">Game Development</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -84,154 +80,43 @@
                 </div>
             </div>
 
-            <!-- Step 4: Resume Upload -->
             <div class="form-part" data-step="4">
-                <div class="form-group">
-                    <label for="resume">Upload Resume</label>
-                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-                    <span id="file-name">No file chosen</span>
-                </div>
-                <div class="navigation-buttons">
-                    <button type="button" class="prev-step cta-button prev">Previous</button>
-                    <button type="submit" class="cta-button">Submit</button>
-                </div>
-            </div>
-
-            <!-- Progress dots -->
-            <div class="progress-indicator">
-                <span class="dot active" data-step="1"></span>
-                <span class="dot" data-step="2"></span>
-                <span class="dot" data-step="3"></span>
-                <span class="dot" data-step="4"></span>
-            </div>
-            
-            <!-- Loading overlay -->
-            <div id="loading-overlay" class="loading-overlay">
-                <div class="loading-spinner"></div>
-            </div>
-        </form>
-        
-        <!-- Modal pop-up -->
-        <div id="modal" class="modal-overlay">
-            <div class="modal-content glowing-element">
-                <span class="close-button">&times;</span>
-                <h2 class="modal-title">Registration Successful!</h2>
-                <p class="modal-message">Your details have been submitted. Welcome to Perceptron!</p>
-            </div>
-        </div>
+    <div class="form-group">
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
     </div>
-    
-    <!-- Inline particles.js Library and Config -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // Use a more robust check for DOM readiness
-        window.onload = function() {
-            // Load the particles.js library with your config
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 200,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
-                    },
-                    "color": {
-                        "value": "#ffffff"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 2,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#ffffff",
-                        "opacity": 0.9,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 4,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": false
-                        },
-                        "onclick": {
-                            "enable": false
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 400,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-        };
-    </script>
+    <div class="navigation-buttons">
+        <button type="button" class="prev-step cta-button prev">Previous</button>
+        <button type="submit" class="cta-button">Submit</button>
+    </div>
+</div>
+
+            <div class="progress-indicator">
+    <span class="dot active" data-step="1"></span>
+    <span class="dot" data-step="2"></span>
+    <span class="dot" data-step="3"></span>
+    <span class="dot" data-step="4"></span>
+</div>
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
+        </div>
+
+        </form>
+        <div id="modal" class="modal-overlay">
+    <div class="modal-content glowing-element">
+        <span class="close-button">&times;</span>
+        <h2 class="modal-title">Registration Successful!</h2>
+        <p class="modal-message">Your details have been submitted. Welcome to Perceptron!</p>
+    </div>
+</div>
+    </div>
+
+    <script src="js/particles.min.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('particles.js config loaded');
+        });
+    </script>
 </body>
 </html>
