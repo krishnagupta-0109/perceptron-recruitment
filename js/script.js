@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstPrefSelect = document.getElementById('firstPref');
     const secondPrefSelect = document.getElementById('secondPref');
     const allOptions = [
-        { value: 'AI & ML', text: 'AI & ML' },
-        { value: 'Web Development', text: 'Web Development' },
-        { value: 'Data Science', text: 'Data Science' },
-        { value: 'Competitive Programming', text: 'Competitive Programming' },
-        { value: 'Cybersecurity', text: 'Cybersecurity' },
-        { value: 'Robotics', text: 'Robotics' },
-        { value: 'Game Development', text: 'Game Development' }
-    ];
+    { value: 'Treasurer', text: 'Treasurer' },
+    { value: 'Web Development Lead', text: 'Web Development Lead' },
+    { value: 'App Dev Lead', text: 'App Dev Lead' },
+    { value: 'PR & Outreach Lead', text: 'PR & Outreach Lead' },
+    { value: 'Event Manager', text: 'Event Manager' },
+    { value: 'Executive', text: 'Executive' },
+    { value: 'Marketing & Design Lead', text: 'Marketing & Design Lead' }
+];
 
     const updateSecondPref = () => {
         const selectedValue = firstPrefSelect.value;
