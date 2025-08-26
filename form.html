@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- The particles.js background will be hidden on mobile via CSS for performance -->
-    <div id="particles-js"></div>
+    <!-- New CSS-based background animation -->
+    <div class="background-animation"></div>
 
     <div class="form-container glowing-element">
         <h1 class="form-title">Join Perceptron</h1>
@@ -120,16 +120,6 @@
             </div>
         </div>
     </div>
-
-    <!-- SCRIPT FIX: Place particles.js script before the inline script that uses it. -->
-    <script src="js/particles.min.js"></script>
-    <script>
-        // Load particles.js config
-        particlesJS.load('particles-js', 'particles.json', function() {
-            console.log('particles.js config loaded');
-        });
-    </script>
-    <!-- SCRIPT FIX: Place your main script last to ensure all HTML elements are loaded first -->
     <script src="js/script.js"></script>
 </body>
 </html>
