@@ -366,9 +366,7 @@ body, html {
 
 @media (max-width: 768px) {
     /* Hiding the particles.js background on mobile for performance */
-    #particles-js {
-        display: none;
-    }
+    
 
     /* Adjustments for the main container */
     .form-container {
