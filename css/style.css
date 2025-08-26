@@ -365,10 +365,7 @@ body, html {
 }
 
 @media (max-width: 768px) {
-    /* Adjustments for the form title */
     .form-title {
         font-size: 1.8rem;
-        word-wrap: break-word; 
-        white-space: normal;
     }
 }
