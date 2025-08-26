@@ -1,5 +1,7 @@
+/* Import fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap');
 
+/* Define color variables */
 :root {
     --primary-color: #00ffff; /* A vibrant Cyan for the main glow */
     --secondary-color: #7fffd4; /* A light Aquamarine for text */
@@ -8,11 +10,12 @@
     --form-bg: rgba(13, 14, 26, 0.85); /* Semi-transparent dark background */
 }
 
+/* General Body and HTML Styles */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: transparent;
+    /* No background-color here, as we'll use a new div for the animated background */
     font-family: 'Rajdhani', sans-serif;
     color: #fff;
     height: 100%;
@@ -22,14 +25,47 @@ body, html {
     overflow: hidden;
 }
 
-#particles-js {
+/* New CSS-based background animation */
+.background-animation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    background-color: var(--dark-bg); /* Use your defined dark background color */
+    z-index: -1; /* Make sure it's behind everything else */
+    overflow: hidden;
 }
+
+.background-animation::before,
+.background-animation::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* This creates a subtle moving dots effect, similar to threads */
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: move-background 30s linear infinite;
+}
+
+.background-animation::after {
+    animation-direction: reverse;
+    background-size: 15px 15px;
+    opacity: 0.5;
+}
+
+@keyframes move-background {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(150px, 150px);
+    }
+}
+
 
 /* Welcome Page Styling */
 .content {
@@ -63,23 +99,20 @@ body, html {
 }
 
 /* Form Container Styling */
-/* Form Container Styling */
 .form-container {
     width: 450px;
     height: auto;
     min-height: 450px;
     max-width: 90%;
-    
     background-color: var(--form-bg);
     box-shadow: 0 0 40px rgba(63, 110, 255, 0.4), 0 0 60px rgba(63, 110, 255, 0.3);
-    
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.5s ease-in-out;
-    position: relative; /* Add this line */
-    overflow: hidden; /* Add this line */
+    position: relative;
+    overflow: hidden;
 }
 
 .form-title {
@@ -220,24 +253,13 @@ body, html {
 }
 
 .glowing-element {
-    /* The base element styling */
-    /* background-color: #3f6eff; */
-    /* border-radius: 8px; */
-    /* padding: 20px; */
-    /* color: #fff; */
-    
-    /* The core of the luminance effect */
     box-shadow: 
-        0 0 10px #fff,             
-        0 0 20px #3f6eff,      
-        0 0 30px #3f6eff,         
-        0 0 50px #3f6eff,         
-        0 0 70px rgba(63, 110, 255, 0.5), 
-        0 0 90px rgba(63, 110, 255, 0.3); 
-}
-
-#particles-js{
-    background-color: var(--dark-bg);
+        0 0 10px #fff, 
+        0 0 20px #3f6eff, 
+        0 0 30px #3f6eff, 
+        0 0 50px #3f6eff, 
+        0 0 70px rgba(63, 110, 255, 0.5),
+        0 0 90px rgba(63, 110, 255, 0.3);
 }
 
 /* Fix for dropdown options visibility */
@@ -327,7 +349,6 @@ body, html {
     color: var(--accent-color);
 }
 
-
 /* Loading Overlay and Spinner */
 .loading-overlay {
     position: absolute;
@@ -364,6 +385,7 @@ body, html {
     }
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .form-title {
         font-size: 1.8rem;
