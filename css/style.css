@@ -198,3 +198,13 @@ html, body {
   .content h1 { font-size: 1.8em; }
   .content h2 { font-size: 1em; }
 }
+
+/* Hide all form parts by default */
+.form-part {
+  display: none;
+}
+
+/* Show only the active one */
+.form-part.active {
+  display: block;
+}
