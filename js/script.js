@@ -1,3 +1,4 @@
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registrationForm');
     const formParts = document.querySelectorAll('.form-part');
@@ -26,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstPrefSelect = document.getElementById('firstPref');
     const secondPrefSelect = document.getElementById('secondPref');
     const allOptions = [
-    { value: 'Treasurer', text: 'Treasurer' },
-    { value: 'Web Development Lead', text: 'Web Development Lead' },
-    { value: 'App Dev Lead', text: 'App Dev Lead' },
-    { value: 'PR & Outreach Lead', text: 'PR & Outreach Lead' },
-    { value: 'Event Manager', text: 'Event Manager' },
-    { value: 'Executive', text: 'Executive' },
-    { value: 'Marketing & Design Lead', text: 'Marketing & Design Lead' }
-];
+        { value: 'Treasurer', text: 'Treasurer' },
+        { value: 'Web Development Lead', text: 'Web Development Lead' },
+        { value: 'App Dev Lead', text: 'App Dev Lead' },
+        { value: 'PR & Outreach Lead', text: 'PR & Outreach Lead' },
+        { value: 'Event Manager', text: 'Event Manager' },
+        { value: 'Executive', text: 'Executive' },
+        { value: 'Marketing & Design Lead', text: 'Marketing & Design Lead' }
+    ];
 
     const updateSecondPref = () => {
         const selectedValue = firstPrefSelect.value;
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const validateField = (input) => {
         let isFieldValid = true;
 
-        if (input.id === 'scholarNo') {
+        if (input.id === 'scholarNo' && input.value.length !== 8) {
             isFieldValid = false;
         } else if (!input.checkValidity()) {
             isFieldValid = false;
@@ -107,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs.forEach(input => {
             if (input.id === 'scholarNo' && input.value.length !== 8) {
                 isValid = false;
+                input.setCustomValidity("Scholar number must be exactly 8 digits.");
+                input.reportValidity();
+            } else {
+                input.setCustomValidity("");
             }
             if (!input.checkValidity()) {
                 isValid = false;
@@ -133,36 +138,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (validateStep(currentStep)) {
-        const formData = new FormData(form);
-
-        const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com/submissions'; 
-        
-        loadingOverlay.classList.add('active');
-        
-        try {
-            const response = await fetch(API_ENDPOINT, {
-                method: 'POST',
-                body: formData
-            });
+        e.preventDefault();
+        if (validateStep(currentStep)) {
+            const formData = new FormData(form);
+            const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com/submissions'; 
             
-            if (response.ok) {
-                showModal('Registration Successful!', 'Your details have been submitted. Welcome to Perceptron!');
-            } else {
-                const errorData = await response.json();
-                console.error('API Error:', response.status, response.statusText, errorData.error);
-                showModal('Submission Failed', errorData.error || `Server responded with status ${response.status}`);
+            loadingOverlay.classList.add('active');
+            
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    showModal('Registration Successful!', 'Your details have been submitted. Welcome to Perceptron!');
+                    form.reset();
+                    currentStep = 1;
+                    showStep(currentStep);
+                } else {
+                    let errorMessage = `Server responded with status ${response.status}`;
+                    try {
+                        const errorData = await response.json();
+                        if (errorData.error) errorMessage = errorData.error;
+                    } catch {
+                        // fallback to default error
+                    }
+                    console.error('API Error:', response.status, response.statusText);
+                    showModal('Submission Failed', errorMessage);
+                }
+            } catch (error) {
+                console.error('Network Error:', error);
+                showModal('Network Error', `A network error occurred: ${error.message}. Check your connection or server.`);
+            } finally {
+                loadingOverlay.classList.remove('active');
             }
-        } catch (error) {
-            console.error('Network Error:', error);
-            showModal('Network Error', `A network error occurred: ${error.message}. Check your connection or server.`);
-        } finally {
-            loadingOverlay.classList.remove('active');
         }
-    }
-});
-
+    });
 
     closeModalButton.addEventListener('click', () => {
         modal.classList.remove('show');
