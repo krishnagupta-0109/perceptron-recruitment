@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 
 // ---------------- Multer Setup ----------------
 const upload = multer({ 
-  limits: { fileSize: 350 * 1024 } // max 100KB
+  limits: { fileSize: 350 * 1024 } // max 350KB
 });
 
 // ---------------- Routes ----------------
@@ -56,7 +56,7 @@ app.post("/submissions", (req, res, next) => {
     if (err instanceof multer.MulterError) {
       // A Multer error occurred during file upload.
       if (err.code === "LIMIT_FILE_SIZE") {
-        return res.status(400).json({ error: "File is too large. Max size is 100KB." });
+        return res.status(400).json({ error: "File is too large. Max size is 350KB." });
       }
     }
     // Pass other errors or continue to the next middleware (the route logic)
