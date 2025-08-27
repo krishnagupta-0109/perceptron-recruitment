@@ -238,9 +238,6 @@ body, html {
         0 0 90px rgba(63, 110, 255, 0.3); 
 }
 
-#particles-js{
-    background-color: var(--dark-bg);
-}
 
 /* Fix for dropdown options visibility */
 .form-group select option {
