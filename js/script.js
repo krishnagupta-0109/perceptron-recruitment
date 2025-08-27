@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const validateField = (input) => {
         let isFieldValid = true;
 
-        if (input.id === 'scholarNo' && input.value.length !== 8) {
+        if (input.id === 'scholarNo') {
             isFieldValid = false;
         } else if (!input.checkValidity()) {
             isFieldValid = false;
