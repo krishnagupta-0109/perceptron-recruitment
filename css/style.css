@@ -19,7 +19,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #particles-js {
@@ -65,10 +66,11 @@ body, html {
 /* Form Container Styling */
 /* Form Container Styling */
 .form-container {
-    width: 450px;
+    width: 100%;
     height: auto;
-    min-height: 450px;
-    max-width: 90%;
+    min-height: auto;
+    max-width: 450px;
+    margin: 10px;
     
     background-color: var(--form-bg);
     box-shadow: 0 0 40px rgba(63, 110, 255, 0.4), 0 0 60px rgba(63, 110, 255, 0.3);
@@ -292,6 +294,8 @@ body, html {
 }
 
 .modal-content {
+    width: 90%;
+    max-width: 400px;
     background-color: var(--form-bg);
     padding: 30px;
     border-radius: 10px;
@@ -361,5 +365,45 @@ body, html {
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.5em;
+    }
+    .content h2 {
+        font-size: 1.2em;
+    }
+    .form-container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+    .form-title {
+        font-size: 1.4em;
+    }
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .cta-button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 1.8em;
+    }
+    .content h2 {
+        font-size: 1em;
     }
 }
