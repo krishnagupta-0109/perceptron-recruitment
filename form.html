@@ -8,6 +8,9 @@
 </head>
 <body>
     <div id="particles-js"></div>
+    <!-- put this AFTER the #particles-js div -->
+<div class="hud-scan" aria-hidden="true"></div>
+
 
     <div class="form-container glowing-element" >
         <h1 class="form-title">Join Perceptron</h1>
@@ -111,13 +114,9 @@
     </div>
 </div>
     </div>
-
-    <script src="js/particles.min.js"></script>
+    
     <script src="js/script.js"></script>
-    <script>
-        particlesJS.load('particles-js', 'particles.json', function() {
-            console.log('particles.js config loaded');
-        });
-    </script>
+    <script type="module" src="js/neural-bg.module.js"></script>
+
 </body>
 </html>
