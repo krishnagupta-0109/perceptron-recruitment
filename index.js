@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 
 // ---------------- Multer Setup ----------------
 const upload = multer({ 
-  limits: { fileSize: 100 * 1024 } // max 100KB
+  limits: { fileSize: 350 * 1024 } // max 100KB
 });
 
 // ---------------- Routes ----------------
