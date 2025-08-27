@@ -133,38 +133,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (validateStep(currentStep)) {
-            const formData = new FormData(form);
+    e.preventDefault();
+    if (validateStep(currentStep)) {
+        const formData = new FormData(form);
+
+        const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com/submissions'; 
+        
+        loadingOverlay.classList.add('active');
+        
+        try {
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                body: formData
+            });
             
-            const API_ENDPOINT = 'https://perceptron-recruitment.onrender.com'; 
-            
-            loadingOverlay.classList.add('active');
-            
-            try {
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                if (response.ok) {
-                    // Success! Show the custom modal
-                    showModal('Registration Successful!', 'Your details have been submitted. Welcome to Perceptron!');
-                } else {
-                    // Handle server errors
-                    const errorData = await response.json();
-                    console.error('API Error:', response.status, response.statusText, errorData.error);
-                    showModal('Submission Failed', errorData.error || `Server responded with status ${response.status}`);
-                }
-            } catch (error) {
-                // Handle network errors
-                console.error('Network Error:', error);
-                showModal('Network Error', `A network error occurred: ${error.message}. Check your connection or server.`);
-            } finally {
-                loadingOverlay.classList.remove('active');
+            if (response.ok) {
+                showModal('Registration Successful!', 'Your details have been submitted. Welcome to Perceptron!');
+            } else {
+                const errorData = await response.json();
+                console.error('API Error:', response.status, response.statusText, errorData.error);
+                showModal('Submission Failed', errorData.error || `Server responded with status ${response.status}`);
             }
+        } catch (error) {
+            console.error('Network Error:', error);
+            showModal('Network Error', `A network error occurred: ${error.message}. Check your connection or server.`);
+        } finally {
+            loadingOverlay.classList.remove('active');
         }
-    });
+    }
+});
+
 
     closeModalButton.addEventListener('click', () => {
         modal.classList.remove('show');
