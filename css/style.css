@@ -1,41 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;700&display=swap');
 
 :root {
-    --primary-color: #00ffff; /* Neon Cyan */
-    --secondary-color: #7fffd4; /* Aquamarine */
-    --accent-color: #ff00ff;   /* Neon Pink */
-    --dark-bg: #0d0e1a;        /* Dark base background */
-    --form-bg: rgba(13, 14, 26, 0.85);
+  --primary-color: #00ffff;
+  --secondary-color: #7fffd4;
+  --accent-color: #ff00ff;
+  --dark-bg: #0a0a0f;
+  --form-bg: rgba(13, 14, 26, 0.85);
 }
 
-/* Reset + Background Setup */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'Rajdhani', sans-serif;
-    color: #fff;
-    background: var(--dark-bg); /* ensures no white bg */
-    overflow-x: hidden;
-    overflow-y: auto;
+/* Reset + Dark Background */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--dark-bg);
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-/* Background canvas effect */
-#bg, 
-#particles-js, 
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2; /* very back */
-    background: var(--dark-bg);
-    display: block;
+/* Background canvas */
+#bg, #particles-js, canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark-bg);
+  z-index: -2;
+  display: block;
 }
 
-/* HUD scanning overlay */
+/* HUD Scan Overlay */
 .hud-scan {
   position: fixed;
   inset: 0;
@@ -43,8 +39,8 @@ canvas {
   z-index: -1;
   background: repeating-linear-gradient(
     to bottom,
-    rgba(0,255,255,0.02),
-    rgba(0,255,255,0.02) 2px,
+    rgba(0,255,255,0.03),
+    rgba(0,255,255,0.03) 2px,
     transparent 2px,
     transparent 6px
   );
@@ -57,278 +53,148 @@ canvas {
   100% { transform: translateY(100%); }
 }
 
-/* Content wrapper (keeps heading + form centered without breaking bg) */
+/* ---------- LANDING PAGE ---------- */
 .content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 20px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
-
-/* Headings */
 .content h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 5em;
-    font-weight: 700;
-    letter-spacing: 5px;
-    margin-bottom: 0.1em;
-    text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-    animation: glitch 1.5s infinite;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 0.2em;
+  text-shadow: 0 0 12px var(--primary-color), 0 0 25px var(--primary-color);
 }
 .content h2 {
-    font-size: 1.8em;
-    color: var(--secondary-color);
-    letter-spacing: 3px;
-    font-weight: 300;
+  font-size: 1.6em;
+  color: var(--secondary-color);
+  font-weight: 300;
+  letter-spacing: 2px;
 }
-@keyframes glitch {
-    0% { transform: skewX(0deg); text-shadow: 0 0 10px var(--primary-color); }
-    10% { transform: skewX(-5deg); text-shadow: 0 0 15px var(--accent-color); }
-    20% { transform: skewX(5deg); text-shadow: 0 0 10px var(--primary-color); }
-    30% { transform: skewX(0deg); }
-    100% { transform: skewX(0deg); }
+.content .cta-button {
+  margin-top: 30px;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 15px var(--primary-color);
+}
+.content .cta-button:hover {
+  background: var(--primary-color);
+  color: #000;
+  box-shadow: 0 0 25px var(--primary-color), 0 0 50px var(--primary-color);
 }
 
-/* Form Container */
+/* ---------- FORM PAGE ---------- */
 .form-container {
-    width: 100%;
-    max-width: 450px;
-    margin: 20px auto;
-    background-color: var(--form-bg);
-    box-shadow: 0 0 40px rgba(63, 110, 255, 0.4), 0 0 60px rgba(63, 110, 255, 0.3);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
+  width: 100%;
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 10px;
+  background: var(--form-bg);
+  box-shadow: 0 0 40px rgba(0,255,255,0.3), 0 0 60px rgba(0,255,255,0.25);
+  position: relative;
+  z-index: 10;
 }
-
-/* Form Title */
 .form-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8em;
-    text-align: center;
-    text-shadow: 0 0 10px var(--primary-color);
-    margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8em;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px var(--primary-color);
 }
-
-/* Multi-Step Form Parts */
-.form-part {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    width: calc(100% - 40px);
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.form-part.active {
-    opacity: 1;
-    visibility: visible;
-    position: relative;
-}
-
-/* Form Elements */
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .form-group label {
-    display: block;
-    font-size: 0.9em;
-    margin-bottom: 5px;
-    color: var(--secondary-color);
-    letter-spacing: 1px;
-    text-shadow: 0 0 5px var(--secondary-color), 0 0 10px rgba(163, 184, 232, 0.4);
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  display: block;
+  color: var(--secondary-color);
 }
 .form-group input,
 .form-group select {
-    width: 100%;
-    padding: 8px;
-    background-color: transparent;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    color: #fff;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 0 5px rgba(63, 110, 255, 0.2);
-    font-family: 'Rajdhani', sans-serif;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  transition: 0.3s ease;
 }
 .form-group input:focus,
 .form-group select:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.5);
-    background-color: rgba(63, 110, 255, 0.05);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px var(--accent-color);
+  outline: none;
 }
 
-/* Select Dropdown Fix */
-.form-group select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="%23a3b8e8" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px top 50%;
-}
-.form-group select option {
-    background-color: var(--form-bg);
-    color: var(--secondary-color);
-}
-
-/* Navigation Buttons */
-.navigation-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
+/* Buttons */
 .cta-button {
-    background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    font-size: 1em;
-    padding: 12px 24px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 5px;
-    box-shadow: 0 0 15px var(--primary-color);
-    width: 100%;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
 }
 .cta-button:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color), 0 0 60px var(--primary-color);
+  background: var(--primary-color);
+  color: #000;
+  box-shadow: 0 0 25px var(--primary-color);
 }
 .cta-button.prev {
-    border: 2px solid var(--secondary-color);
-    color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
 }
 .cta-button.prev:hover {
-    background-color: var(--secondary-color);
-    color: var(--dark-bg);
-    box-shadow: 0 0 20px var(--secondary-color), 0 0 40px var(--secondary-color), 0 0 60px var(--secondary-color);
+  background: var(--secondary-color);
+  color: #000;
 }
 
 /* Progress Dots */
 .progress-indicator {
-    text-align: center;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
 }
 .dot {
-    height: 10px;
-    width: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
 }
 .dot.active {
-    background-color: var(--accent-color);
-    box-shadow: 0 0 8px var(--accent-color);
-}
-
-/* Real-time Validation */
-.form-group input.valid {
-    border-color: #00ff41;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
-}
-.form-group input.invalid {
-    border-color: #ff004f;
-    box-shadow: 0 0 10px rgba(255, 0, 79, 0.6);
-}
-
-/* Modal */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    z-index: 1000;
-}
-.modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-.modal-content {
-    width: 90%;
-    max-width: 400px;
-    background-color: var(--form-bg);
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 0 40px rgba(63, 110, 255, 0.4), 0 0 60px rgba(63, 110, 255, 0.3);
-}
-.modal-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5em;
-    text-shadow: 0 0 10px var(--primary-color);
-}
-.modal-message {
-    color: var(--secondary-color);
-    font-size: 1.1em;
-    margin-bottom: 20px;
-}
-.close-button {
-    color: #fff;
-    font-size: 2em;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-.close-button:hover {
-    color: var(--accent-color);
-}
-
-/* Loading Overlay */
-.loading-overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(13, 14, 26, 0.95);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-.loading-overlay.active {
-    display: flex;
-    opacity: 1;
-}
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid var(--primary-color);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    to { transform: rotate(360deg); }
+  background: var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color);
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .content h1 { font-size: 2.5em; }
-    .content h2 { font-size: 1.2em; }
-    .form-container { width: 95%; margin: 10px auto; padding: 15px; }
-    .form-title { font-size: 1.4em; }
-    .modal-content { width: 90%; padding: 20px; }
-    .navigation-buttons { flex-direction: column; gap: 10px; }
-    .cta-button { width: 100%; padding: 10px; }
+  .content h1 { font-size: 2.5em; }
+  .content h2 { font-size: 1.2em; }
+  .form-container { width: 90%; padding: 15px; }
 }
 @media (max-width: 480px) {
-    .content h1 { font-size: 1.8em; }
-    .content h2 { font-size: 1em; }
+  .content h1 { font-size: 1.8em; }
+  .content h2 { font-size: 1em; }
 }
